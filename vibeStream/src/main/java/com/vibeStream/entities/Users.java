@@ -23,6 +23,7 @@ public class Users {
 	public Users() {
 		super();
 	}
+	
 	public Users(int id, String username, String email, String password, LocalDate dateOfBirth, String gender,
 			String address, String country, boolean isPremium) {
 		super();
