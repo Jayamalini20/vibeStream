@@ -1,21 +1,35 @@
 body {
 	background-color: #264653;
 	color: #264653;
+	margin:0;
 	
 }
 
 .loginform, .registerform{
 	display: flex;
-		justify-content: center;
-		align-items: center;
+	justify-content: center;
+	align-items: center;
 		height: 100vh;
 		margin: 0;
 		font-family: Arial, sans-serif;
 }
 
+.admincontainer{
+	display: flex;
+		justify-content: center;
+		padding-top: 50px;
+		align-items: flex-start;
+			height: 100vh;
+			margin: 0;
+			font-family: Arial, sans-serif;
+	
+}
+
 .header {
 	background-color: #2a9d8f;
-	padding: 20px;
+	padding-top: 5px;
+	padding-bottom: 30px;
+	
 	text-align: center;
 	margin-bottom: 20px;
 	border-radius: 8px;
@@ -26,7 +40,8 @@ body {
 	margin-bottom: 20px;
 }
 
-.header a {
+.header a, .header .buy-button{
+	font-family: Arial, sans-serif;
 	color: #e9c46a;
 	text-decoration: none;
 	margin: 0 10px;
@@ -36,7 +51,7 @@ body {
 	transition: background-color 0.3s;
 }
 
-.header a:hover {
+.header a:hover, .header .buy-button:hover {
 	background-color: #45a049;
 }
 
@@ -44,22 +59,26 @@ body {
 
 form {
 	background-color: #2a9d8f;
-	padding: 20px;
+	padding: 10px;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	max-width: 400px;
 	width: 100%;
 }
 
+
+
 label {
 	display: block;
 	margin-bottom: 10px;
 }
 
+input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="date"] {
 	width: calc(100% - 22px);
-	padding: 10px;
+	padding: 5px;
 	margin-bottom: 10px;
 	border: none;
 	border-radius: 5px;
@@ -113,8 +132,8 @@ a:hover {
 }
 
 .image-wrapper img {
-	width: 300px;
-	height: 200px;
+	width: 265px;
+	height: 155px;
 	object-fit: cover;
 	/* Ensures images cover the specified dimensions */
 }
@@ -139,13 +158,19 @@ a:hover {
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.modal-content, .buy-modal-content {
 	background-color: #fefefe;
 	margin: 15% auto;
 	padding: 10px;
 	border: 1px solid #888;
-	width: 40%;
+	width: 30%;
 }
+
+.buy-modal-content h2{
+	text-align: center;
+}
+
+
 
 .close {
 	color: #aaa;
@@ -161,7 +186,7 @@ a:hover {
 	cursor: pointer;
 }
 
-.modal-button {
+.modal-button, .buy-button {
 	display: block;
 	width: 100%;
 	padding: 10px;
@@ -174,6 +199,7 @@ a:hover {
 	cursor: pointer;
 }
 
-.modal-button:hover {
+.modal-button:hover, .buy-button:hover {
 	background-color: #45a049;
+	
 }

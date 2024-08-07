@@ -1,7 +1,5 @@
 package com.vibeStream.entities;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,8 +13,9 @@ public class Users {
 	String username;
 	String email;
 	String password;
-	LocalDate dateOfBirth;
+	String dateOfBirth;
 	String gender;
+	String role;
 	String address;
 	String country;
 	boolean isPremium;
@@ -24,8 +23,8 @@ public class Users {
 		super();
 	}
 	
-	public Users(int id, String username, String email, String password, LocalDate dateOfBirth, String gender,
-			String address, String country, boolean isPremium) {
+	public Users(int id, String username, String email, String password, String dateOfBirth, String gender,
+			String role, String address, String country, boolean isPremium) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -33,6 +32,7 @@ public class Users {
 		this.password = password;
 		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
+		this.role = role;
 		this.address = address;
 		this.country = country;
 		this.isPremium = isPremium;
@@ -61,10 +61,10 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public LocalDate getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(LocalDate dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getGender() {
@@ -73,6 +73,15 @@ public class Users {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -91,10 +100,12 @@ public class Users {
 	public void setPremium(boolean isPremium) {
 		this.isPremium = isPremium;
 	}
+
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
-				+ ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", address=" + address + ", country="
-				+ country + ", isPremium=" + isPremium + "]";
+		return "Users [id=" + id + ", username=" + username + ", email=" + email + ", dateOfBirth=" + dateOfBirth
+				+ ", gender=" + gender + ", role=" + role + ", address=" + address + ", country=" + country
+				+ ", isPremium=" + isPremium + "]";
 	}
+	
 }
