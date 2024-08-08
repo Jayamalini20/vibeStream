@@ -1,5 +1,7 @@
 package com.vibeStream.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.vibeStream.entities.Song;
 import com.vibeStream.entities.Users;
+import com.vibeStream.services.SongService;
 import com.vibeStream.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -16,8 +20,12 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class UserController {
 	
+	
 	@Autowired
 	UserService service;
+	
+	@Autowired
+	SongService songService;
 	
 	@PostMapping("/register")
 	public String addUsers(@ModelAttribute Users user)
@@ -56,8 +64,8 @@ public class UserController {
 				
 				if(userStatus==true)
 				{
-//					List<Song> songList=songService.fetchAllSongs();
-//					model.addAttribute("songs",songList);
+					List<Song> songList=songService.fetchAllSongs();
+					model.addAttribute("songs",songList);
 					return "displaySongs";
 				}
 				else
@@ -71,6 +79,15 @@ public class UserController {
 			return "login";
 		}
 	}
+	
+	@GetMapping("/viewUser")
+	public String viewusers(Model model)
+	{
+		List<Users> userList = service.findAllUsers();
+		model.addAttribute("users",userList);
+		return "viewUser";
+	}
+	
 	
 	
 	@GetMapping("/logout")

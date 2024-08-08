@@ -1,35 +1,36 @@
 body {
 	background-color: #264653;
 	color: #264653;
-	margin:0;
-	
+	margin: 0;
+
 }
 
-.loginform, .registerform{
+.loginform,
+.registerform {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-		height: 100vh;
-		margin: 0;
-		font-family: Arial, sans-serif;
+	height: 100vh;
+	margin: 0;
+	font-family: Arial, sans-serif;
 }
 
-.admincontainer{
+.admincontainer {
 	display: flex;
-		justify-content: center;
-		padding-top: 50px;
-		align-items: flex-start;
-			height: 100vh;
-			margin: 0;
-			font-family: Arial, sans-serif;
-	
+	justify-content: center;
+	padding-top: 50px;
+	align-items: flex-start;
+	height: 100vh;
+	margin: 0;
+	font-family: Arial, sans-serif;
+
 }
 
 .header {
 	background-color: #2a9d8f;
 	padding-top: 5px;
 	padding-bottom: 30px;
-	
+
 	text-align: center;
 	margin-bottom: 20px;
 	border-radius: 8px;
@@ -40,7 +41,8 @@ body {
 	margin-bottom: 20px;
 }
 
-.header a, .header .buy-button{
+.header a,
+.header .buy-button {
 	font-family: Arial, sans-serif;
 	color: #e9c46a;
 	text-decoration: none;
@@ -51,7 +53,8 @@ body {
 	transition: background-color 0.3s;
 }
 
-.header a:hover, .header .buy-button:hover {
+.header a:hover,
+.header .buy-button:hover {
 	background-color: #45a049;
 }
 
@@ -116,12 +119,9 @@ a:hover {
 	background-color: #2a9d8f;
 	padding: 30px;
 	padding-left: 110px;
-
 	display: flex;
-	flex-wrap: wrap;
-	/* Allows images to wrap to the next line if there's not enough space */
-	gap: 20px;
-	/* Space between images */
+	flex-wrap: wrap; /* Allows images to wrap to the next line if there's not enough space */
+	gap: 20px; /* Space between images */
 }
 
 .image-wrapper {
@@ -134,8 +134,7 @@ a:hover {
 .image-wrapper img {
 	width: 265px;
 	height: 155px;
-	object-fit: cover;
-	/* Ensures images cover the specified dimensions */
+	object-fit: cover;  /* Ensures images cover the specified dimensions */
 }
 
 .image-label {
@@ -145,8 +144,7 @@ a:hover {
 }
 
 .modal {
-	display: none;
-	/* Hidden by default */
+	display: none;  /* Hidden by default */
 	position: fixed;
 	z-index: 1;
 	left: 0;
@@ -158,7 +156,8 @@ a:hover {
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content, .buy-modal-content {
+.modal-content,
+.buy-modal-content {
 	background-color: #fefefe;
 	margin: 15% auto;
 	padding: 10px;
@@ -166,7 +165,7 @@ a:hover {
 	width: 30%;
 }
 
-.buy-modal-content h2{
+.buy-modal-content h2 {
 	text-align: center;
 }
 
@@ -186,7 +185,8 @@ a:hover {
 	cursor: pointer;
 }
 
-.modal-button, .buy-button {
+.modal-button,
+.buy-button {
 	display: block;
 	width: 100%;
 	padding: 10px;
@@ -199,7 +199,41 @@ a:hover {
 	cursor: pointer;
 }
 
-.modal-button:hover, .buy-button:hover {
+.modal-button:hover,
+.buy-button:hover {
 	background-color: #45a049;
-	
+
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 20px;
+}
+
+.card {
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin: 10px;
+	width: 250px;
+	text-align: center;
+	padding: 10px;
+}
+
+.card img {
+	border-radius: 10px 10px 0 0;
+	width: 100%;
+	height: 150px;  /* Set a fixed height */
+	object-fit: cover;  /* Ensures the image covers the area */
+}
+
+.card .details {
+	margin: 10px 0;
+}
+
+audio {
+	width: 100%;
 }

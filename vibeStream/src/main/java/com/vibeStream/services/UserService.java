@@ -1,6 +1,8 @@
 package com.vibeStream.services;
 
 
+import java.util.List;
+
 import com.vibeStream.entities.Users;
 
 public interface UserService {
@@ -16,5 +18,9 @@ public interface UserService {
 	Users getUser(String email);
 
 	void updateUser(Users u);
+
+	List<Users> findAllUsers();
+	
+	
 
 }

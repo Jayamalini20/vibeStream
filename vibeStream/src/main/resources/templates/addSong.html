@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Home Page</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<style>
+	
+</style>
+</head>
+<body>
+	<header class="header">
+	    <h1 class="message">Streaming Your Vibe..!</h1>
+		<br>
+		<a href="viewUser">View Users</a>
+		<a href="viewLikes">View Likes</a>
+		<a href="viewComments">View Comments</a>
+	    <a href="viewSongs">View all Songs</a>
+	    <a href="createPlaylist">Create Playlist</a>
+	    <a href="viewPlaylists">View all Playlists</a>
+	    <a href="logout">LOGOUT</a>
+	</header>
+	
+	<section class="admincontainer">
+		
+		<form action="addSong" method="post">
+			<h1>Add A New Song</h1>
+		        <label for="songname">Song name:</label>
+		        <input type="text" id="songname" name="name" required><br>
+
+		        <label for="songartist">Song Artist:</label>
+		        <input type="text" id="songartist" name="artist" required><br>
+
+		        <label for="songgenre">Song Genre:</label>
+		        <input type="text" id="songgenre" name="genre" required><br>
+
+				<label for="songlink">Song Link:</label>
+		        <input type="text" id="songlink" name="link" required><br>
+				
+				<label for="imageLink">Image Link:</label>
+				<input type="text" id="imageLink" name="image"><br>
+
+		        <input type="submit" value="ADD SONG">
+		    </form>
+	</section>
+</body>
+</html>
