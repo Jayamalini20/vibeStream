@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">ml>
+<head>
+<meta charset="ISO-8859-1">
+<title>Display Songs page</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+	<header class="header">
+	    <h1 class="message">Tune In, Turn Up at TuneHub</h1>
+	    <a href="viewSongs">View all Songs</a>
+	    <a href="createPlaylist">Create Playlist</a>
+	    <a href="viewPlaylists">View all Playlists</a>
+	    <a href="logout">LOGOUT</a>
+	</header>
+	<section class="container">
+	    <div class="card" th:each="song : ${songs}">
+	        <img th:src="${song.image}" alt="Song Image">
+	        <div class="details">
+	            <p th:text="${song.name}">Song Name</p>
+	            <!--<p th:text="${song.artist}">Artist Name</p>-->
+	            <!--<p th:text="${song.genre}">Genre</p>-->
+	        </div>
+	        <audio controls>
+	            <source th:src="${song.link}" type="audio/mpeg">
+	        </audio>
+	    </div>
+	</section>
+	<script>
+	
+		
+	document.addEventListener("DOMContentLoaded", function() {
+	    var audios = document.querySelectorAll("audio");
+	    console.log("Number of audio elements found: ", audios.length);
+
+	    audios.forEach(function(audio) {
+	        audio.addEventListener("play", function() {
+	            console.log("Audio started playing:", audio);
+	            audios.forEach(function(otherAudio) {
+	                if (otherAudio !== audio) {
+	                    console.log("Pausing audio:", otherAudio);
+	                    otherAudio.pause();
+	                }
+	            });
+	        });
+	    });
+	});
+	
+	
+	
+	
+	</script>
+</body>
+</html>
