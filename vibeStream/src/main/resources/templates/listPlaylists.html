@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<header class="header">
+			    <h1 class="message">Tune In, Turn Up at TuneHub</h1>
+			    <a href="viewSongs">View all Songs</a>
+			    <a href="createPlaylist">Create Playlist</a>
+			    <a href="viewPlaylists">View all Playlists</a>
+			    <a href="logout">LOGOUT</a>
+			</header>
+	    <h1>Playlists</h1>
+	    <div class="container">
+	        <div th:each="playlist : ${allPlaylists}" class="card" th:onclick="'window.location.href=\'/viewPlaylist/' + ${playlist.id} + '\';'">
+	            <img th:src="${playlist.image}" alt="Playlist Image">
+	            <h2 th:text="${playlist.name}"></h2>
+	        </div>
+	    </div>
+</body>
+</html>
