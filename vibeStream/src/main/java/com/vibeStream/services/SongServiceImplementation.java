@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.vibeStream.entities.Song;
 import com.vibeStream.repositories.SongRepository;
 
+import java.util.Optional;
+
 @Service
 public class SongServiceImplementation implements SongService {
 	
@@ -38,4 +40,14 @@ public class SongServiceImplementation implements SongService {
 		
 	}
 
+	@Override
+	public Song getSong(Integer songId) {
+		Optional<Song> song = repo.findById(songId);
+		
+		return song.orElse(null);
+	}
+
+	
+
+	
 }

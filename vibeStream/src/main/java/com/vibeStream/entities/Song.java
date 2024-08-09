@@ -19,6 +19,7 @@ public class Song {
 	String genre;
 	String link;
 	String image;
+	boolean likedByCurrentUser;
 	
 	@OneToMany(mappedBy = "song")
     List<Likes> likes;
@@ -31,7 +32,7 @@ public class Song {
 	public Song() {
 		super();
 	}
-	public Song(int id, String name, String artist, String genre, String link, List<Playlist> playlists, String image) {
+	public Song(int id, String name, String artist, String genre, String link, List<Playlist> playlists, String image, boolean likedByCurrentUser) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -40,6 +41,7 @@ public class Song {
 		this.link = link;
 		this.playlists = playlists;
 		this.image = image;
+		this.likedByCurrentUser = likedByCurrentUser;
 	}
 	public int getId() {
 		return id;
@@ -83,11 +85,32 @@ public class Song {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+	public boolean isLikedByCurrentUser() {
+		return likedByCurrentUser;
+	}
+	public void setLikedByCurrentUser(boolean likedByCurrentUser) {
+		this.likedByCurrentUser = likedByCurrentUser;
+	}
+	public List<Likes> getLikes() {
+		return likes;
+	}
+	public void setLikes(List<Likes> likes) {
+		this.likes = likes;
+	}
+	public List<Comments> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comments> comments) {
+		this.comments = comments;
+	}
 	@Override
 	public String toString() {
 		return "Song [id=" + id + ", name=" + name + ", artist=" + artist + ", genre=" + genre + ", link=" + link
-				+ ", image=" + image + ", playlists=" + playlists + "]";
+				+ ", image=" + image + ", likedByCurrentUser=" + likedByCurrentUser + ", likes=" + likes + ", comments="
+				+ comments + ", playlists=" + playlists + "]";
 	}
+	
 	
 	
 

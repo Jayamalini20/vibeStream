@@ -10,13 +10,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.vibeStream.entities.Song;
+import com.vibeStream.entities.Users;
+import com.vibeStream.services.LikeService;
 import com.vibeStream.services.SongService;
+import com.vibeStream.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class SongController {
 
 	@Autowired
 	SongService service;
+	
+	@Autowired
+	LikeService likeService;
+	
+	@Autowired
+	UserService userService;
 	
 	@PostMapping("/addSong")
 	public String addSong(@ModelAttribute Song song)
@@ -34,11 +45,31 @@ public class SongController {
 		return "addSong";
 	}
 	
+//	@GetMapping("/viewSongs")
+//	public String viewSongs(Model model)
+//	{
+//		List<Song> songList=service.fetchAllSongs();
+//		System.out.println(songList);	
+//		model.addAttribute("songs",songList);
+//		return "displaySongs";
+//	}
+	
 	@GetMapping("/viewSongs")
-	public String viewSongs(Model model)
+	public String viewSongs(Model model, HttpSession session)
 	{
+		String email = (String) session.getAttribute("email");
+		Users user= userService.getUser(email);
 		List<Song> songList=service.fetchAllSongs();
-		System.out.println(songList);
+		
+		
+		
+		for(Song song: songList)
+		{
+			boolean likedByCurrentUser = likeService.isLikedByUser(user.getId(), song.getId());
+			song.setLikedByCurrentUser(likedByCurrentUser);
+		}
+		
+		System.out.println(songList);	
 		model.addAttribute("songs",songList);
 		return "displaySongs";
 	}
@@ -48,4 +79,7 @@ public class SongController {
 	{
 		return "addSong";
 	}
+	
+	
+	
 }
