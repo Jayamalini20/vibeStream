@@ -45,13 +45,8 @@
 		<table border="1">
 			<thead>
 				<tr>
-					<th>UserName</th>
-					<th>Role</th>
-					<th>IsPremium</th>
-					<th>Gender</th>
-					<th>Email</th>
-					<th>Country</th>
-					<th>Address</th>
+					<th>Song Name</th>
+					<th>Likes</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -62,6 +57,7 @@
 					<td th:text="${user.isPremium}"></td>
 					<td th:text="${user.gender}"></td>
 					<td th:text="${user.email}"></td>
+					<td th:text="${user.dateOfBirth}"></td>
 					<td th:text="${user.country}"></td>
 					<td th:text="${user.address}"></td>
 					

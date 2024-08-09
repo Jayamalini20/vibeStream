@@ -5,15 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+
 @Entity
-public class Users {
+public class Users{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	String username;
 	String email;
 	String password;
-	String dateOfBirth;
 	String gender;
 	String role;
 	String address;
@@ -23,14 +23,13 @@ public class Users {
 		super();
 	}
 	
-	public Users(int id, String username, String email, String password, String dateOfBirth, String gender,
+	public Users(int id, String username, String email, String password, String gender,
 			String role, String address, String country, boolean isPremium) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
 		this.role = role;
 		this.address = address;
@@ -60,12 +59,6 @@ public class Users {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getDateOfBirth() {
-		return dateOfBirth;
-	}
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
 	}
 	public String getGender() {
 		return gender;
@@ -103,9 +96,12 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", username=" + username + ", email=" + email + ", dateOfBirth=" + dateOfBirth
-				+ ", gender=" + gender + ", role=" + role + ", address=" + address + ", country=" + country
+		return "Users [id=" + id + ", username=" + username + ", email=" + email + ", gender=" + gender + ", role=" + role + ", address=" + address + ", country=" + country
 				+ ", isPremium=" + isPremium + "]";
 	}
+
 	
+	
+   
+
 }

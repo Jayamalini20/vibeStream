@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.vibeStream.entities.Song;
 import com.vibeStream.entities.Users;
 import com.vibeStream.services.SongService;
 import com.vibeStream.services.UserService;
@@ -64,9 +63,9 @@ public class UserController {
 				
 				if(userStatus==true)
 				{
-					List<Song> songList=songService.fetchAllSongs();
-					model.addAttribute("songs",songList);
-					return "displaySongs";
+//					List<Song> songList=songService.fetchAllSongs();
+//					model.addAttribute("songs",songList);
+					return "redirect:/viewSongs";
 				}
 				else
 				{
@@ -79,6 +78,9 @@ public class UserController {
 			return "login";
 		}
 	}
+	
+	
+	
 	
 	@GetMapping("/viewUser")
 	public String viewusers(Model model)
