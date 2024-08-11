@@ -9,36 +9,48 @@
 </head>
 
 <body>
+	
 	<header class="header">
-		<h1 class="message">Tune In, Turn Up at TuneHub</h1>
-		<a href="viewSongs">View all Songs</a>
-		<a href="createPlaylist">Create Playlist</a>
-		<a href="viewPlaylists">View all Playlists</a>
-		<a href="logout">LOGOUT</a>
+		<h1 class="message">Streaming Your Vibe..!</h1>
+		<br>
+		<div th:if="${user.role == 'admin'}">
+			
+			<a href="viewUser">View Users</a>
+					<a href="viewLikes">View Likes</a>
+					<a href="addSong">Add Song</a>
+				    <a href="viewSongs">View all Songs</a>
+				    <a href="createPlaylist">Create Playlist</a>
+				    <a href="viewPlaylists">View all Playlists</a>
+				    <a href="logout">LOGOUT</a>
+			
+		</div>
+		<div th:if="${user.role == 'customer'}">
+			<a href="viewSongs">View all Songs</a>
+			<a href="createPlaylist">Create Playlist</a>
+			<a href="viewPlaylists">View all Playlists</a>
+			<a href="logout">LOGOUT</a>
+		</div>
 	</header>
 	<section class="container">
-	    <div class="card" th:each="song : ${songs}">
-	        <img th:src="${song.image}" alt="Song Image">
-	        <div class="details">
-	            <p th:text="${song.name}">Song Name</p>
-	        </div>
-	        <audio controls>
-	            <source th:src="${song.link}" type="audio/mpeg">
-	        </audio>
+		<div class="card" th:each="song : ${songs}">
+			<img th:src="${song.image}" alt="Song Image">
+			<div class="details">
+				<p th:text="${song.name}">Song Name</p>
+			</div>
+			<audio controls>
+				<source th:src="${song.link}" type="audio/mpeg">
+			</audio>
+			<div th:if="${user.role == 'customer'}">
 			<img th:src="'https://github.com/Jayamalini20/mp3Files/blob/main/like_hollow.png?raw=true'"
-			            style="width: 30px; height: 30px;"
-			            th:if="${!song.likedByCurrentUser}"
-			            th:onclick="'likeSong(' + ${song.id} + ', this)'"
-			            alt="Like" />
+				style="width: 30px; height: 30px;" th:if="${!song.likedByCurrentUser}"
+				th:onclick="'likeSong(' + ${song.id} + ', this)'" alt="Like" />
 
-			       <!-- Liked button image when the song is liked by the current user -->
-			       <img th:src="'https://github.com/Jayamalini20/mp3Files/blob/main/like_solid.png?raw=true'"
-			            style="width: 30px; height: 30px;"
-			            th:if="${song.likedByCurrentUser}"
-			            th:onclick="'likeSong(' + ${song.id} + ', this)'"
-			            alt="Like" />
-			
-	      <!-- <img src="https://github.com/Jayamalini20/mp3Files/blob/main/like_hollow.png?raw=true" style="width: 30px; height: 30px;"
+			<!-- Liked button image when the song is liked by the current user -->
+			<img th:src="'https://github.com/Jayamalini20/mp3Files/blob/main/like_solid.png?raw=true'"
+				style="width: 30px; height: 30px;" th:if="${song.likedByCurrentUser}"
+				th:onclick="'likeSong(' + ${song.id} + ', this)'" alt="Like" />
+				</div>
+			<!-- <img src="https://github.com/Jayamalini20/mp3Files/blob/main/like_hollow.png?raw=true" style="width: 30px; height: 30px;"
 	             th:onclick="'window.location.href=\'/like/' + ${song.id} + '\';'"
 	             alt="Like"/> 
 				 <img src="https://github.com/Jayamalini20/mp3Files/blob/main/like_solid.png?raw=true" style="width: 30px; height: 30px;"
@@ -49,38 +61,39 @@
 				      style="width: 30px; height: 30px;"
 				      alt="Like"
 				      th:onclick="'likeSong(' + ${song.id} + ', this)'"/> -->
-	    </div>
+		</div>
 	</section>
 	<script>
 
 		document.addEventListener("DOMContentLoaded", function () {
-		    // Existing audio play/pause logic
-		    var audios = document.querySelectorAll("audio");
-		    console.log("Number of audio elements found: ", audios.length);
+			// Existing audio play/pause logic
+			var audios = document.querySelectorAll("audio");
+			console.log("Number of audio elements found: ", audios.length);
 
-		    audios.forEach(function (audio) {
-		        audio.addEventListener("play", function () {
-		            console.log("Audio started playing:", audio);
-		            audios.forEach(function (otherAudio) {
-		                if (otherAudio !== audio) {
-		                    console.log("Pausing audio:", otherAudio);
-		                    otherAudio.pause();
-		                }
-		            });
-		        });
-		    });
+			audios.forEach(function (audio) {
+				audio.addEventListener("play", function () {
+					console.log("Audio started playing:", audio);
+					audios.forEach(function (otherAudio) {
+						if (otherAudio !== audio) {
+							console.log("Pausing audio:", otherAudio);
+							otherAudio.pause();
+						}
+					});
+				});
+			});
 
-		    // likeSong function to handle like button click
-		    window.likeSong = function(songId, element) {
-		        // Print the song ID to the console
-		        console.log("Liked song ID:", songId);
+			// likeSong function to handle like button click
+				    window.likeSong = function(songId, element) {
+				        // Print the song ID to the console
+				        console.log("Liked song ID:", songId);
 
-		        // Change the image to the "liked" state
-		        element.src = "https://github.com/Jayamalini20/mp3Files/blob/main/like_solid.png?raw=true";
+				        // Change the image to the "liked" state
+				        element.src = "https://github.com/Jayamalini20/mp3Files/blob/main/like_solid.png?raw=true";
 
-		        // Redirect to the like endpoint
-		        window.location.href = '/like/' + songId;
-		    };
+				        // Redirect to the like endpoint
+				        window.location.href = '/like/' + songId;
+				    };
+			
 		});
 
 

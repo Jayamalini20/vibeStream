@@ -59,6 +59,7 @@ public class SongController {
 	{
 		String email = (String) session.getAttribute("email");
 		Users user= userService.getUser(email);
+		System.out.println(user.getRole());	
 		List<Song> songList=service.fetchAllSongs();
 		
 		
@@ -68,7 +69,7 @@ public class SongController {
 			boolean likedByCurrentUser = likeService.isLikedByUser(user.getId(), song.getId());
 			song.setLikedByCurrentUser(likedByCurrentUser);
 		}
-		
+		model.addAttribute("user", user);
 		System.out.println(songList);	
 		model.addAttribute("songs",songList);
 		return "displaySongs";

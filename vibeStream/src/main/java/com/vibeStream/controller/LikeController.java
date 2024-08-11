@@ -34,7 +34,7 @@ public class LikeController {
 	public String likeSong(@PathVariable("songId") Integer songId, HttpSession session) {
 	    // Retrieve user email from session
 	    String email = (String) session.getAttribute("email");
-	    
+	    System.out.println("Song liked"+songId);
 	    Users user= userService.getUser(email);
 	    Song song = songService.getSong(songId);
 	    

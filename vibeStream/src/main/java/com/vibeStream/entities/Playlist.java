@@ -15,19 +15,17 @@ public class Playlist {
 	int id;
 	String name;
 	String image;
-	String createdBy;
 	String visibility;
 	@ManyToMany
 	List<Song> songs;
 	public Playlist() {
 		super();
 	}
-	public Playlist(int id, String name, String image, String createdBy, String visibility, List<Song> songs) {
+	public Playlist(int id, String name, String image, String visibility, List<Song> songs) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.image = image;
-		this.createdBy = createdBy;
 		this.visibility = visibility;
 		this.songs = songs;
 	}
@@ -50,13 +48,6 @@ public class Playlist {
 		this.songs = songs;
 	}
 	
-	public String getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-	
 	public String getVisibility() {
 		return visibility;
 	}
@@ -71,8 +62,7 @@ public class Playlist {
 	}
 	@Override
 	public String toString() {
-		return "Playlist [id=" + id + ", name=" + name + ", image=" + image + ", createdBy=" + createdBy
-				+ ", visibility=" + visibility + "]";
+		return "Playlist [id=" + id + ", name=" + name + ", image=" + image	+ ", visibility=" + visibility + "]";
 	}
 	
 }

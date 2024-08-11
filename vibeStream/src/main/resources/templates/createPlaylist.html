@@ -60,12 +60,26 @@
 
 <body>
 	<header class="header">
-		<h1 class="message">Tune In, Turn Up at TuneHub</h1>
-		<a href="viewSongs">View all Songs</a>
-		<a href="createPlaylist">Create Playlist</a>
-		<a href="viewPlaylists">View all Playlists</a>
-		<a href="logout">LOGOUT</a>
-	</header>
+			<h1 class="message">Streaming Your Vibe..!</h1>
+			<br>
+			<div th:if="${user.role == 'admin'}">
+				
+				<a href="viewUser">View Users</a>
+						<a href="viewLikes">View Likes</a>
+						<a href="addSong">Add Song</a>
+					    <a href="viewSongs">View all Songs</a>
+					    <a href="createPlaylist">Create Playlist</a>
+					    <a href="viewPlaylists">View all Playlists</a>
+					    <a href="logout">LOGOUT</a>
+				
+			</div>
+			<div th:if="${user.role == 'customer'}">
+				<a href="viewSongs">View all Songs</a>
+				<a href="createPlaylist">Create Playlist</a>
+				<a href="viewPlaylists">View all Playlists</a>
+				<a href="logout">LOGOUT</a>
+			</div>
+		</header>
 
 	<section>
 		<form action="addPlaylist" method="post">
