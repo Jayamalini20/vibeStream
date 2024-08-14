@@ -12,7 +12,9 @@
 	<div class="registerform">
 		<form id="registration" action="register" method="post">
 			
-			
+			<!-- CSRF Token -->
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
 
 			<h2>User Registration Form</h2>
 

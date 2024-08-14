@@ -75,6 +75,7 @@ public class UserController {
 		}
 		else
 		{
+			System.out.println("In login else block");
 			return "login";
 		}
 	}

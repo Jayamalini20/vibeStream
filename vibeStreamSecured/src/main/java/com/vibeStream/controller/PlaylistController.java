@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,29 +38,28 @@ public class PlaylistController {
 	PlaylistService playlistService;
 	
 	@GetMapping("/createPlaylist")
-	public String createPlaylist(Model model, HttpSession session)
+	public String createPlaylist(Model model)
 	{
 		List<Song> songList=songService.fetchAllSongs();
-		String email = (String) session.getAttribute("email");
-		Users user= userService.getUser(email);
+		Users user= userService.getUser();
 		model.addAttribute("user", user);
 		model.addAttribute("songs", songList);
+		System.out.println(songList);
 		return "createPlaylist";
 	}
 
 	@PostMapping("/addPlaylist")
-	public String addPlaylist(@ModelAttribute Playlist playlist, HttpServletRequest request, RedirectAttributes redirectAttributes, HttpSession session)
+	public String addPlaylist(@ModelAttribute Playlist playlist)
 	{
 		System.out.println(playlist);
-		String email = (String) session.getAttribute("email");
-		Users user= userService.getUser(email);
+		Users user= userService.getUser();
 		if(user.getRole().equals("admin"))
 		{
 			playlist.setVisibility("everyone");
 		}
 		else
 		{
-			playlist.setVisibility(email);
+			playlist.setVisibility(user.getEmail());
 		}
 		if(playlist.getImage().equals(""))
 		{
@@ -77,35 +79,32 @@ public class PlaylistController {
 	}
 	
 	@GetMapping("/viewPlaylists")
-	public String viewPlaylists(Model model, HttpSession session)
+	public String viewPlaylists(Model model)
 	{
 		List<Playlist> allPlaylists=playlistService.fetchAllPlaylists();
 		List<Playlist> plist = new ArrayList<>();
-		String email = (String) session.getAttribute("email");
+		Users user= userService.getUser();
 		for(Playlist list: allPlaylists)
 		{
-			if((list.getVisibility().equals("everyone")) || (list.getVisibility().equals(email)))
+			if((list.getVisibility().equals("everyone")) || (list.getVisibility().equals(user.getEmail())))
 			{
 				plist.add(list);
 			}
 			
 		}
 		model.addAttribute("plist",plist);
-		
-		Users user= userService.getUser(email);
 		model.addAttribute("user", user);
 		return "listPlaylists";
 	}
 	
 	@GetMapping("/viewPlaylist/{id}")
-	public String viewPlaylist(@PathVariable("id") int id, Model model, HttpSession session) {
+	public String viewPlaylist(@PathVariable("id") int id, Model model) {
 	    Playlist playlist = playlistService.findPlaylistById(id);
 	    if (playlist != null) {
 	        model.addAttribute("playlist", playlist);
 	        model.addAttribute("songs", playlist.getSongs());
 	    }
-	    String email = (String) session.getAttribute("email");
-		Users user= userService.getUser(email);
+		Users user= userService.getUser();
 		model.addAttribute("user", user);
 	    return "viewPlaylistSongs";
 	}

@@ -22,5 +22,6 @@ public class NavController {
 	{
 		return "register";
 	}
-
+	
+	
 }

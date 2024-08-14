@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Playlist List Page</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<header class="header">
+				<h1 class="message">Streaming Your Vibe..!</h1>
+				<br>
+				<div th:if="${user.role == 'admin'}">
+					
+					<a href="viewUser">View Users</a>
+							<a href="viewLikes">View Likes</a>
+							<a href="addSong">Add Song</a>
+						    <a href="viewSongs">View all Songs</a>
+						    <a href="createPlaylist">Create Playlist</a>
+						    <a href="viewPlaylists">View all Playlists</a>
+						    <a href="logout">LOGOUT</a>
+					
+				</div>
+				<div th:if="${user.role == 'customer'}">
+					<a href="viewSongs">View all Songs</a>
+					<a href="createPlaylist">Create Playlist</a>
+					<a href="viewPlaylists">View all Playlists</a>
+					<a href="logout">LOGOUT</a>
+				</div>
+			</header>
+	    <h1>Playlists</h1>
+	    <div class="container">
+	        <div th:each="playlist : ${plist}" class="card" th:onclick="'window.location.href=\'/viewPlaylist/' + ${playlist.id} + '\';'">
+	            <img th:src="${playlist.image}" alt="Playlist Image">
+	            <h2 th:text="${playlist.name}"></h2>
+	        </div>
+	    </div>
+</body>
+</html>
