@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<title>Index Page</title>
-	<link rel="stylesheet" th:href="@{/css/style.css}">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<style>
+	body {
+	            background-image: url('https://github.com/Jayamalini20/mp3Files/blob/main/customerHome1.png?raw=true');
+	            background-size: cover; /* Ensures the image covers the entire background */
+	            
+	            background-repeat: no-repeat; /* Prevents the image from repeating */
+	            margin: 0;
+	            padding: 0;
+	            color: #fff; /* Adjust text color for visibility */
+	        }
+	
+</style>
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
@@ -12,145 +25,8 @@
 		<a href="login">LOGIN</a>
 		<a href="register">REGISTER</a>
 	</header>
-	<section class="image-container">
-		<div class="image-wrapper">
-			<img src="https://github.com/Jayamalini20/mp3Files/blob/main/calm/image/calm.jpeg?raw=true" alt="calm" />
-			<div class="image-label">Calm</div>
-			<audio controls>
-				<source src="path/to/calm-sample.mp3" type="audio/mpeg">
-			</audio>
-		</div>
-		<div class="image-wrapper">
-			<img src="https://github.com/Jayamalini20/mp3Files/blob/main/cinematic/images/image.jpeg?raw=true"
-				alt="Cinematic" />
-			<div class="image-label">Cinematic</div>
-			<audio controls>
-				<source src="path/to/cinematic-sample.mp3" type="audio/mpeg">
-			</audio>
-		</div>
-		<div class="image-wrapper">
-			<img src="https://github.com/Jayamalini20/mp3Files/blob/main/classical/image/image.jpeg?raw=true"
-				alt="Classical" />
-			<div class="image-label">Classical</div>
-			<audio controls>
-				<source src="path/to/classical-sample.mp3" type="audio/mpeg">
-			</audio>
-		</div>
-		<div class="image-wrapper">
-			<img src="https://github.com/Jayamalini20/mp3Files/blob/main/funky/image/image.png?raw=true" alt="Funky" />
-			<div class="image-label">Funky</div>
-			<audio controls>
-				<source src="path/to/funky-sample.mp3" type="audio/mpeg">
-			</audio>
-		</div>
-		<div class="image-wrapper">
-			<img src="https://github.com/Jayamalini20/mp3Files/blob/main/pop/image/image.jpeg?raw=true" alt="Pop" />
-			<div class="image-label">Pop</div>
-			<audio controls>
-				<source src="path/to/pop-sample.mp3" type="audio/mpeg">
-			</audio>
-		</div>
-		<div class="image-wrapper">
-			<img src="https://github.com/Jayamalini20/mp3Files/blob/main/romantic/image/image.jpeg?raw=true"
-				alt="Romantic" />
-			<div class="image-label">Romantic</div>
-			<audio controls>
-				<source src="path/to/romantic-sample.mp3" type="audio/mpeg">
-			</audio>
-		</div>
-		<div class="image-wrapper">
-			<img src="https://github.com/Jayamalini20/mp3Files/blob/main/Rock/image/image.jpeg?raw=true" alt="Rock" />
-			<div class="image-label">Rock</div>
-			<audio controls>
-				<source src="path/to/rock-sample.mp3" type="audio/mpeg">
-			</audio>
-		</div>
-		<div class="image-wrapper">
-			<img src="https://github.com/Jayamalini20/mp3Files/blob/main/sad/image/image.jpeg?raw=true" alt="Sad" />
-			<div class="image-label">Sad</div>
-			<audio controls>
-				<source src="path/to/sad-sample.mp3" type="audio/mpeg">
-			</audio>
-		</div>
-	</section>
-
-	<div id="myModal" class="modal">
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<h2>Choose an Option</h2>
-			<button class="modal-button" id="loginButton">Login</button>
-			<button class="modal-button" id="registerButton">Register</button>
-		</div>
-	</div>
-
-	<script>
-		// Get modal element
-		var modal = document.getElementById("myModal");
-		var closeButton = document.getElementsByClassName("close")[0];
-		var loginButton = document.getElementById("loginButton");
-		var registerButton = document.getElementById("registerButton");
-
-		// Get all image-wrapper elements
-		var imageWrappers = document.querySelectorAll(".image-wrapper");
-
-		// Function to open the modal with the appropriate button
-		function openModal(target) {
-			modal.style.display = "block";
-			if (target === "login") {
-				loginButton.style.display = "block";
-				registerButton.style.display = "none";
-			} else if (target === "register") {
-				loginButton.style.display = "none";
-				registerButton.style.display = "block";
-			}
-		}
-
-		// Click event listener for image wrappers
-		imageWrappers.forEach(function (wrapper) {
-			wrapper.addEventListener("click", function () {
-				// Retrieve the data-target attribute value to determine whether to show login or register
-				var target = this.getAttribute("data-target");
-				openModal(target);
-			});
-		});
-
-		// Function to open the modal and show the appropriate buttons
-		function openModal(target) {
-			modal.style.display = "block"; // Display the modal
-
-			// Show or hide buttons based on the target value
-			if (target === "login") {
-				loginButton.style.display = "block";  // Show login button
-				registerButton.style.display = "none"; // Hide register button
-			} else if (target === "register") {
-				loginButton.style.display = "none";   // Hide login button
-				registerButton.style.display = "block"; // Show register button
-			}
-		}
-
-		// Click event listener for the close button
-		closeButton.onclick = function () {
-			modal.style.display = "none"; // Hide the modal when close button is clicked
-		}
-
-		// Click event listener for window (outside modal)
-		window.onclick = function (event) {
-			if (event.target === modal) {
-				modal.style.display = "none"; // Hide the modal when clicking outside of it
-			}
-		}
-
-		// Click event listeners for modal buttons
-		loginButton.onclick = function () {
-			window.location.href = "login"; // Redirect to the login page
-		}
-
-		registerButton.onclick = function () {
-			window.location.href = "register"; // Redirect to the register page
-		}
-
-	</script>
-
+	
+		
+		
 </body>
-
 </html>

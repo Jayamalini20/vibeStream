@@ -15,6 +15,7 @@ public class NavController {
 	@GetMapping("/")
     public String index() {
         return "index";
+		
     }
 	
 //	@GetMapping("/login")
@@ -31,9 +32,10 @@ public class NavController {
 	
 	@GetMapping("/login")
     public String login(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("Inside login method");
+        
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
+        
+		if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "login";

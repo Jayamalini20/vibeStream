@@ -45,16 +45,13 @@ public class UserController {
 	public String validateUser()
 	{
 		Users user = service.getUser();
-		System.out.println("Inside validate");
-		System.out.println(user);
+		
 		if(user.getRole().equalsIgnoreCase("admin"))
 		{
-			System.out.println("Welcome admin");
 			return "redirect:/viewUser";
 		}
 		else if(user.getRole().equalsIgnoreCase("customer"))
 		{ 	
-			System.out.println("Welcome customer");
 			if(user.isPremium())
 			{
 				return "redirect:/viewSongs";

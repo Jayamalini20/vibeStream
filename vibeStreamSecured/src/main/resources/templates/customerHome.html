@@ -8,6 +8,20 @@
 	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<style>
+		body {
+			background-image: url('https://github.com/Jayamalini20/mp3Files/blob/main/customerHome1.png?raw=true');
+			background-size: cover;
+			
+
+			background-repeat: no-repeat;
+			
+			margin: 0;
+			padding: 0;
+			font-weight: bold;
+			color: #e9c46a;
+			/* Adjust text color for visibility */
+		}
+
 		.header .header-actions {
 			display: flex;
 			justify-content: center;
@@ -16,10 +30,27 @@
 			/* Adjust gap as needed */
 		}
 
+		.image-wrapper {
+			flex: 1 1 200px;
+			max-width: 200px;
+			margin: 100px;
+			
+			margin-bottom: 0;
+			text-align: center;
+			
+			box-sizing: border-box;
+			
+		}
+		
+		.image-label{
+			color: white;
+		}
+
 		#payment-form {
 			padding: 0;
 			margin: 0;
-			width: fit-content; /* fit-content */
+			width: fit-content;
+			/* fit-content */
 			border-radius: 0px;
 			box-shadow: 0 0 0;
 		}
@@ -30,10 +61,8 @@
 			padding: 10px;
 			border: 0;
 		}
-
-		
 	</style>
-	
+
 </head>
 
 <body>
@@ -48,10 +77,23 @@
 			<a href="logout">LOGOUT</a>
 		</div>
 	</header>
-	<section class="image-container">
+
+	<div>
+		<h2>Unlock the Full Experience with our Premium Membership!</h2>
+		<p>Here’s what you get:</p>
+		<ul>
+			<li>Ad-free experience</li>
+			<li>Access to exclusive tracks and albums</li>
+			<li>Ad-free listening experience</li>
+			<li>Download songs and listen offline</li>
+			<li>Priority customer support</li>
+	</div>
+	<section class="container">
+	
 		<div class="image-wrapper">
-			<img src=" https://github.com/Jayamalini20/mp3Files/blob/main/romantic/image/2.jpeg?raw=true" alt="Sweethearts" />
-			<div class="image-label">Sweethearts (Free)</div>
+			<img src=" https://github.com/Jayamalini20/mp3Files/blob/main/calm/image/2.jpeg?raw=true"
+				alt="Sweethearts" />
+			<div class="image-label">Glo-Fi (Free)</div>
 			<audio controls>
 				<source
 					src="https://github.com/Jayamalini20/mp3Files/raw/main/romantic/2.Sweethearts%20-%20TrackTribe.mp3"
@@ -75,6 +117,7 @@
 				<source src="path/to/classical-sample.mp3" type="audio/mpeg">
 			</audio>
 		</div>
+		<!--
 		<div class="image-wrapper">
 			<img src="https://github.com/Jayamalini20/mp3Files/blob/main/funky/image/image.png?raw=true" alt="Funky" />
 			<div class="image-label">Funky</div>
@@ -111,6 +154,7 @@
 				<source src="path/to/sad-sample.mp3" type="audio/mpeg">
 			</audio>
 		</div>
+		-->
 	</section>
 
 	<div id="myModal" class="modal">
@@ -120,16 +164,18 @@
 			<form id="payment-form">
 				<button type="submit" class="buy-button">GET PREMIUM</button>
 			</form>
-					 
+
 		</div>
 	</div>
 
 
 	<script>
-		
-		
+
+
 
 		document.addEventListener("DOMContentLoaded", function () {
+					
+			
 			// Get modal element
 			var modal = document.getElementById("myModal");
 			var closeButton = document.getElementsByClassName("close")[0];
@@ -141,11 +187,11 @@
 			// Function to open the modal
 			function openModal() {
 				modal.style.display = "block";
-				
-				
+
+
 
 			}
-			
+
 
 			// Click event listener for image wrappers and their children
 			imageWrappers.forEach(function (wrapper) {
@@ -176,6 +222,7 @@
 
 
 		});
+		
 
 		$(document).ready(function () {
 			$(".buy-button").click(function (e) {

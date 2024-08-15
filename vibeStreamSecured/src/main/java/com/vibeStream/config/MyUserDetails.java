@@ -31,9 +31,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-    	
-    	System.out.println(user.getEmail() + "From Myuserdetails");
-        return user.getEmail();
+    	return user.getEmail();
     }
    
     

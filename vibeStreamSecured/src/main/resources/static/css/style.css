@@ -1,7 +1,9 @@
 body {
 	background-color: #264653;
-	color: #264653;
 	margin: 0;
+	padding: 0;
+	color: #264653;
+	
 
 }
 
@@ -14,6 +16,8 @@ body {
 	margin: 0;
 	font-family: Arial, sans-serif;
 }
+
+ 
 
 .admincontainer {
 	display: flex;
@@ -120,8 +124,10 @@ a:hover {
 	padding: 30px;
 	padding-left: 110px;
 	display: flex;
-	flex-wrap: wrap; /* Allows images to wrap to the next line if there's not enough space */
-	gap: 20px; /* Space between images */
+	flex-wrap: wrap;
+	/* Allows images to wrap to the next line if there's not enough space */
+	gap: 20px;
+	/* Space between images */
 }
 
 .image-wrapper {
@@ -134,7 +140,8 @@ a:hover {
 .image-wrapper img {
 	width: 265px;
 	height: 155px;
-	object-fit: cover;  /* Ensures images cover the specified dimensions */
+	object-fit: cover;
+	/* Ensures images cover the specified dimensions */
 }
 
 .image-label {
@@ -144,7 +151,8 @@ a:hover {
 }
 
 .modal {
-	display: none;  /* Hidden by default */
+	display: none;
+	/* Hidden by default */
 	position: fixed;
 	z-index: 1;
 	left: 0;
@@ -226,8 +234,10 @@ a:hover {
 .card img {
 	border-radius: 10px 10px 0 0;
 	width: 100%;
-	height: 150px;  /* Set a fixed height */
-	object-fit: cover;  /* Ensures the image covers the area */
+	height: 150px;
+	/* Set a fixed height */
+	object-fit: cover;
+	/* Ensures the image covers the area */
 }
 
 .card .details {
@@ -237,4 +247,3 @@ a:hover {
 audio {
 	width: 100%;
 }
-
