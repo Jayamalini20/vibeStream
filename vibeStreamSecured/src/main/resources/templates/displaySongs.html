@@ -43,18 +43,29 @@
 				<source th:src="${song.link}" type="audio/mpeg">
 			</audio>
 			<div th:if="${user.role == 'customer'}">
-			<img th:src="'https://github.com/Jayamalini20/mp3Files/blob/main/like_hollow.png?raw=true'"
-				style="width: 30px; height: 30px;" th:if="${!song.likedByCurrentUser}"
-				th:onclick="'likeSong(' + ${song.id} + ', this)'" alt="Like" />
+						<img th:src="'https://github.com/Jayamalini20/mp3Files/blob/main/like_hollow.png?raw=true'"
+							style="width: 30px; height: 30px;" th:if="${!song.likedByCurrentUser}"
+							th:onclick="'likeSong(' + ${song.id} + ', this)'" alt="Like" />
 
-			<img th:src="'https://github.com/Jayamalini20/mp3Files/blob/main/like_solid.png?raw=true'"
-				style="width: 30px; height: 30px;" th:if="${song.likedByCurrentUser}"
-				th:onclick="'likeSong(' + ${song.id} + ', this)'" alt="Like" />
-				</div>
+						<img th:src="'https://github.com/Jayamalini20/mp3Files/blob/main/like_solid.png?raw=true'"
+							style="width: 30px; height: 30px;" th:if="${song.likedByCurrentUser}"
+							th:onclick="'likeSong(' + ${song.id} + ', this)'" alt="Liked" />
+							</div>
 			
 				     
 		</div>
 	</section>
+	
+	<!-- Pagination Controls -->
+	<div class="pagination">
+	    <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+	        <a th:href="@{/viewSongs(page=${i}, size=${size})}"
+	           th:class="${i == currentPage} ? 'active' : ''"
+	           th:text="${i + 1}">1</a>
+	    </span>
+	</div>
+		
+		
 	<script>
 
 		document.addEventListener("DOMContentLoaded", function () {

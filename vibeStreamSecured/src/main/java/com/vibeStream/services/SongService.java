@@ -2,6 +2,9 @@ package com.vibeStream.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.vibeStream.entities.Song;
 
 public interface SongService {
@@ -16,6 +19,7 @@ public interface SongService {
 
 	Song getSong(Integer songId);
 	
+	public Page<Song> getPaginatedSongs(Pageable pageable);
 
 	
 
